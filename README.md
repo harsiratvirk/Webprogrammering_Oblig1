@@ -4,7 +4,7 @@ OsloMet brukernavn: hakau9101
 
 GitHub brukernavn: harsiratvirk
 
-Github repo URL: https://github.com/data1700-v23/oblig-1-harsiratvirk
+Github repo URL: https://github.com/harsiratvirk/oblig-1
 
 Fullt navn: Harsirat Kaur
 

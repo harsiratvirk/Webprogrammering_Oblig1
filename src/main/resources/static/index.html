@@ -7,9 +7,11 @@
 <body>
 <script src="oblig1.js"></script>
 
+
 <h1>Bestilling av kinobiletter</h1>
-<label for="velgfilm">Velg film:</label>
-<select id="velgfilm">
+
+<label for="filmer">Velg film:</label>
+<select id="filmer">
     <option>Velg film her</option>
     <option>Avatar</option>
     <option>Titanic</option>
@@ -17,29 +19,37 @@
 </select><br><br>
 
 <label for="antall">Antall</label>
-<input type="text" id="antall" maxlength="2" size="2"/><br><br>
+<input type="text" id="antall" maxlength="2" size="2" onchange="sjekkAntall()"/>
+<span id="antfeil" style="color: red"></span><br><br>
 
 <table>
     <tr>
-        <td>Fornavn</td><td><input type="text" id="fnavn"/></td>
+        <td>Fornavn</td>
+        <td><input type="text" id="fnavn" onchange="sjekkFnavn()"/>
+            <span id="fnavnfeil" style="color: red"></span>
     </tr>
     <tr>
-        <td>Etternavn</td><td><input type="text" id="enavn"/></td>
+        <td>Etternavn</td>
+        <td><input type="text" id="enavn" onchange="sjekkEnavn()"/>
+            <span id="enavnfeil" style="color: red"></span>
     </tr>
     <tr>
-        <td>Telefonnr</td><td><input type="text" id="tlf"/></td>
+        <td>Telefonnr</td>
+        <td><input type="text" id="tlf" onchange="sjekkTlf()"/>
+            <span id="tlffeil" style="color: red"></span>
     </tr>
     <tr>
-        <td>Epost</td><td><input type="text" id="epost"/></td>
+        <td>Epost</td>
+        <td><input type="email" id="epost" onchange="sjekkEpost()"/>
+            <span id="epostfeil" style="color: red"></span>
     </tr>
 </table>
 
-<button id="kjop" onclick="kjopbillett()">Kjøp billett</button>
+<button onclick="kjopBillett()">Kjøp billett</button>
 
 <h2>Alle billetter</h2>
 <div id="allebiletter"></div>
-<button id="slett" onclick="slettbilletter()">Slett alle billettene</button>
 
-
+<button onclick="slettBilletter()">Slett alle billettene</button>
 </body>
 </html>
