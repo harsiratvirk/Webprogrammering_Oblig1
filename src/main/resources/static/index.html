@@ -7,7 +7,6 @@
 <body>
 <script src="oblig1.js"></script>
 
-
 <h1>Bestilling av kinobiletter</h1>
 
 <label for="filmer">Velg film:</label>
@@ -26,29 +25,30 @@
     <tr>
         <td>Fornavn</td>
         <td><input type="text" id="fnavn" onchange="sjekkFnavn()"/>
-            <span id="fnavnfeil" style="color: red"></span>
+            <span id="fnavnfeil" style="color: red"></span></td>
     </tr>
     <tr>
         <td>Etternavn</td>
         <td><input type="text" id="enavn" onchange="sjekkEnavn()"/>
-            <span id="enavnfeil" style="color: red"></span>
+            <span id="enavnfeil" style="color: red"></span></td>
     </tr>
     <tr>
         <td>Telefonnr</td>
         <td><input type="text" id="tlf" onchange="sjekkTlf()"/>
-            <span id="tlffeil" style="color: red"></span>
+            <span id="tlffeil" style="color: red"></span></td>
     </tr>
     <tr>
         <td>Epost</td>
         <td><input type="email" id="epost" onchange="sjekkEpost()"/>
-            <span id="epostfeil" style="color: red"></span>
+            <span id="epostfeil" style="color: red"></span></td>
     </tr>
+
 </table>
 
 <button onclick="kjopBillett()">Kjøp billett</button>
 
 <h2>Alle billetter</h2>
-<div id="allebiletter"></div>
+<div id="allebilletter"></div>
 
 <button onclick="slettBilletter()">Slett alle billettene</button>
 </body>
