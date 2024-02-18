@@ -8,50 +8,52 @@
 <script src="oblig1.js"></script>
 
 <!-- Form for ordering cinema tickets -->
-<h1>Bestilling av kinobiletter</h1>
+<h1>Order cinema tickets</h1>
 
-<label for="filmer">Velg film:</label>
-<select id="filmer" onchange="sjekkFilmer()">
-    <option value="default">Velg film her</option>
+<label for="movies">Select movie:</label>
+<select id="movies" onchange="validateMovies()">
+    <option value="default">Choose movie here</option>
     <option>Avatar</option>
     <option>Titanic</option>
     <option>Rush Hour</option>
+    <option>Wonka</option>
 </select>
-<span id="filmfeil" style="color: red"></span><br><br>
+<span id="moviesErr" style="color: red"></span><br><br>
 
-<label for="antall">Antall</label>
-<input type="text" id="antall" maxlength="2" size="2" onchange="sjekkAntall()"/>
-<span id="antfeil" style="color: red"></span><br><br>
+<label for="number">Number</label>
+<input type="text" id="number" maxlength="2" size="2" onchange="validateNumber()"/>
+<span id="numberErr" style="color: red"></span><br><br>
 
 <table>
     <tr>
-        <td>Fornavn</td>
-        <td><input type="text" id="fnavn" onchange="sjekkFnavn()"/>
-            <span id="fnavnfeil" style="color: red"></span></td>
+        <td>Name</td>
+        <td><input type="text" id="fname" onchange="validateFname()"/>
+            <span id="fnameErr" style="color: red"></span></td>
     </tr>
     <tr>
-        <td>Etternavn</td>
-        <td><input type="text" id="enavn" onchange="sjekkEnavn()"/>
-            <span id="enavnfeil" style="color: red"></span></td>
+        <td>Surname</td>
+        <td><input type="text" id="sname" onchange="validateSname()"/>
+            <span id="snameErr" style="color: red"></span></td>
     </tr>
     <tr>
-        <td>Telefonnr</td>
-        <td><input type="text" id="tlf" onchange="sjekkTlf()"/>
-            <span id="tlffeil" style="color: red"></span></td>
+        <td>Phone number</td>
+        <td><input type="text" id="tel" onchange="validateTel()"/>
+            <span id="telErr" style="color: red"></span></td>
     </tr>
     <tr>
-        <td>Epost</td>
-        <td><input type="email" id="epost" onchange="sjekkEpost()"/>
-            <span id="epostfeil" style="color: red"></span></td>
+        <td>Email</td>
+        <td><input type="text" id="email" onchange="validateEmail()"/>
+            <span id="emailErr" style="color: red"></span></td>
     </tr>
 </table>
-<button onclick="kjopBillett()">Kjøp billett</button>
+<button onclick="buyTicket()">Buy ticket</button>
 
 <!-- List of purchased tickets -->
-<h2>Alle billetter</h2>
-<div id="allebilletter"></div>
+<h2>All tickets</h2>
+<div id="allTickets"></div>
 
 <!-- Button to delete all tickets -->
-<button onclick="slettBilletter()">Slett alle billettene</button>
+<button onclick="deleteTickets()">Delete all tickets</button>
+    
 </body>
 </html>
