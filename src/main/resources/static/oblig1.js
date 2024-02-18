@@ -1,145 +1,143 @@
 
-// Inputvalidering og sjekk av tomme felt
-function sjekkFilmer() {
-    const filmer = document.getElementById("filmer").value;
-    const filmfeil = document.getElementById("filmfeil");
+// Input validation and check for empty fields
+function validateMovies() {
+    const movies = document.getElementById("movies").value;
+    const moviesErr = document.getElementById("moviesErr");
 
-    // Sjekker om feltet er tomt
-    if (filmer === "" || filmer === "default") {
-        filmfeil.innerText = "Film må oppgis";
+    if (movies === "" || movies === "default") {
+        moviesErr.innerText = "Movie is required";
     } else {
-        filmfeil.innerText = ""; // nullstiller felt
+        moviesErr.innerText = ""; // Resets field
     }
 }
 
-function sjekkAntall() {
-    const antall = document.getElementById("antall").value;
-    const antfeil = document.getElementById("antfeil");
+function validateNumber() {
+    const number = document.getElementById("number").value;
+    const numberErr = document.getElementById("numberErr");
 
-    if (antall === "") {
-        antfeil.innerText = "Antall må oppgis";
+    if (number === "") {
+        numberErr.innerText = "Quantity is required";
     }
-    // Sjekker om input er et tall
-    else if (isNaN(antall) || antall < 1) {
-        antfeil.innerText = "Skriv inn tall";
+    else if (isNaN(number) || number < 1) {
+        numberErr.innerText = "Enter numbers";
     } else {
-        antfeil.innerText = "";
+        numberErr.innerText = "";
     }
 }
 
-function sjekkFnavn() {
-    const fnavn = document.getElementById("fnavn").value;
-    const fnavnfeil = document.getElementById("fnavnfeil");
+function validateFname() {
+    const fname = document.getElementById("fname").value;
+    const fnameErr = document.getElementById("fnameErr");
 
-    if (fnavn === "") {
-        fnavnfeil.innerText = "Fornavn må oppgis";
+    if (fname === "") {
+        fnameErr.innerText = "Name is required";
     } else {
-        fnavnfeil.innerText = "";
+        fnameErr.innerText = "";
     }
 }
 
-function sjekkEnavn() {
-    const enavn = document.getElementById("enavn").value;
-    const enavnfeil = document.getElementById("enavnfeil");
+function validateSname() {
+    const sname = document.getElementById("sname").value;
+    const snameErr = document.getElementById("snameErr");
 
-    if (enavn === "") {
-        enavnfeil.innerText = "Etternavn må oppgis";
+    if (sname === "") {
+        snameErr.innerText = "Surname is required";
     } else {
-        enavnfeil.innerText = "";
+        snameErr.innerText = "";
     }
 }
 
-function sjekkTlf() {
-    const tlf = document.getElementById("tlf").value;
-    const tlffeil = document.getElementById("tlffeil");
-    const nrRegex = /^[0-9]{8}$/;
+function validateTel() {
+    const tel = document.getElementById("tel").value;
+    const telErr = document.getElementById("telErr");
+    const telRegex = /^[0-9]{8}$/;
 
-    if (tlf === "") {
-       tlffeil.innerText = "Tlfnr må oppgis";
+    if (tel === "") {
+        telErr.innerText = "Phone number is required";
     }
-    else if (!nrRegex.test(tlf)) {
-        tlffeil.innerText = "Oppgi et gyldig telefonnummer."
+    else if (!telRegex.test(tel)) {
+        telErr.innerText = "Enter a valid phone number"
     } else {
-        tlffeil.innerText = "";
+        telErr.innerText = "";
     }
 }
 
-function sjekkEpost() {
-    const epost = document.getElementById("epost").value;
-    const epostfeil = document.getElementById("epostfeil");
-    const epostRegex = /^[a-zA-Z0-9._%&+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+function validateEmail() {
+    const email = document.getElementById("email").value;
+    const emailErr = document.getElementById("emailErr");
+    const emailRegex = /^[a-zA-Z0-9._%&+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (epost === "") {
-        epostfeil.innerText = "Epost må oppgis";
+    if (email === "") {
+        emailErr.innerText = "Email address is required";
     }
-    else if (!epostRegex.test(epost)) {
-        epostfeil.innerText = "Oppgi en gyldig epost."
+    else if (!emailRegex.test(email)) {
+        emailErr.innerText = "Enter a valid email address"
     } else {
-        epostfeil.innerText = "";
+        emailErr.innerText = "";
     }
 }
 
-function sjekkValidering() {
-    sjekkFilmer()
-    sjekkAntall();
-    sjekkFnavn();
-    sjekkEnavn();
-    sjekkTlf();
-    sjekkEpost();
+function checkValidation() {
+    validateMovies()
+    validateNumber();
+    validateFname();
+    validateSname();
+    validateTel();
+    validateEmail();
 
-    // Returnerer true hvis ingen valideringsfeil, ellers false.
-        const valideringsFeil = document.getElementById("filmfeil").innerText ||
-            document.getElementById("antfeil").innerText ||
-            document.getElementById("fnavnfeil").innerText ||
-            document.getElementById("enavnfeil").innerText ||
-            document.getElementById("tlffeil").innerText ||
-            document.getElementById("epostfeil").innerText;
-        return !valideringsFeil;
+    // Returns true if no validation error, false otherwise.
+    const validationError = document.getElementById("moviesErr").innerText ||
+        document.getElementById("numberErr").innerText ||
+        document.getElementById("fnameErr").innerText ||
+        document.getElementById("snameErr").innerText ||
+        document.getElementById("telErr").innerText ||
+        document.getElementById("emailErr").innerText;
+    return !validationError;
 }
 
-let billettliste = [];
-function kjopBillett() {
-    // Forhindrer å kjøre resten av koden dersom valideringen returnerer false.
-    if(!sjekkValidering()) {
+let ticketList = [];
+function buyTicket() {
+    // Prevents the rest of the code from running if the validation returns false.
+    if(!checkValidation()) {
         return;
     }
 
-    // Oppretter billet-objekt og legger det inn i arrayet
-    const billett = {
-        film: document.getElementById("filmer").value,
-        antall: document.getElementById("antall").value,
-        fnavn: document.getElementById("fnavn").value,
-        enavn: document.getElementById("enavn").value,
-        tlf: document.getElementById("tlf").value,
-        epost: document.getElementById("epost").value
+// Creates the ticket object and puts it into the array
+    const ticket = {
+        movies: document.getElementById("movies").value,
+        number: document.getElementById("number").value,
+        fname: document.getElementById("fname").value,
+        sname: document.getElementById("sname").value,
+        tel: document.getElementById("tel").value,
+        email: document.getElementById("email").value
     };
-    billettliste.push(billett);
+    ticketList.push(ticket);
 
-    // Skriver ut billetter
-    let ut = "<table><tr>" +
-        "<th>Film</th><th>Antall</th><th>Navn</th><th>Telefonnr</th><th>Epost</th></tr>";
-    for (let pers of billettliste) {
-        ut += "<tr><td>" + pers.film + "</td>" +
-            "<td>" + pers.antall + "</td>" +
-            "<td>" + pers.fnavn + " " + pers.enavn + "</td>" +
-            "<td>" + pers.tlf + "</td>" +
-            "<td>" + pers.epost + "</td>" +
+// Prints ticket
+    let out = "<table><tr>" +
+        "<th>Movies</th><th>Number of tickets</th><th>Name</th><th>Phone number</th><th>Email</th></tr>";
+    for (let pers of ticketList) {
+        out += "<tr><td>" + pers.movies + "</td>" +
+            "<td>" + pers.number + "</td>" +
+            "<td>" + pers.fname + " " + pers.sname + "</td>" +
+            "<td>" + pers.tel + "</td>" +
+            "<td>" + pers.email + "</td>" +
             "</tr>";
     }
-    ut += "</table>";
-    document.getElementById("allebilletter").innerHTML = ut;
+    out += "</table>";
+    document.getElementById("allTickets").innerHTML = out;
 
-    // nullstiller inputfeltene
-    document.getElementById("filmer").value = "";
-    document.getElementById("antall").value = "";
-    document.getElementById("fnavn").value = "";
-    document.getElementById("enavn").value = "";
-    document.getElementById("tlf").value = "";
-    document.getElementById("epost").value = "";
+// Resets the input fields
+    document.getElementById("movies").value = "";
+    document.getElementById("number").value = "";
+    document.getElementById("fname").value = "";
+    document.getElementById("sname").value = "";
+    document.getElementById("tel").value = "";
+    document.getElementById("email").value = "";
 }
 
-// Sletter alle billetene
-function slettBilletter() {
-    billettliste = [];
-    document.getElementById("allebilletter").innerHTML = "";
+// Deletes all tickets
+function deleteTickets() {
+    ticketList = [];
+    document.getElementById("allTickets").innerHTML = "";
 }
