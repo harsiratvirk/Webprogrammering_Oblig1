@@ -8,7 +8,9 @@ Github repo URL: https://github.com/harsiratvirk/oblig-1
 
 Fullt navn: Harsirat Kaur
 
-Kort beskrivelse av applikasjon (5-10 setninger):
+Kort beskrivelse av applikasjon:
+Et Skjema for bestilling av kinobilletter. Brukeren velger film, antall
+billetter og legger igjen personopplysninger for å få returnert en eller
+flere kinobilletter med mulighet til å slette samtlige billetter.
 
-Her skal tolkninger av oppgaveteksten, lagt inn ekstra
-features som vi er fornøyd med, osv.
+Noe inndata som telefonnummer og epost valideres ved hjelp av Regex.

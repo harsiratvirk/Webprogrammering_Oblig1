@@ -7,15 +7,17 @@
 <body>
 <script src="oblig1.js"></script>
 
+<!-- Skjema for kinobillettbestilling-->
 <h1>Bestilling av kinobiletter</h1>
 
 <label for="filmer">Velg film:</label>
-<select id="filmer">
-    <option>Velg film her</option>
+<select id="filmer" onchange="sjekkFilmer()">
+    <option value="default">Velg film her</option>
     <option>Avatar</option>
     <option>Titanic</option>
     <option>Rush Hour</option>
-</select><br><br>
+</select>
+<span id="filmfeil" style="color: red"></span><br><br>
 
 <label for="antall">Antall</label>
 <input type="text" id="antall" maxlength="2" size="2" onchange="sjekkAntall()"/>
@@ -42,14 +44,14 @@
         <td><input type="email" id="epost" onchange="sjekkEpost()"/>
             <span id="epostfeil" style="color: red"></span></td>
     </tr>
-
 </table>
-
 <button onclick="kjopBillett()">Kjøp billett</button>
 
+<!-- Liste over kjøpte billetter -->
 <h2>Alle billetter</h2>
 <div id="allebilletter"></div>
 
+<!-- Knapp for å slette samtlige billetter -->
 <button onclick="slettBilletter()">Slett alle billettene</button>
 </body>
 </html>
