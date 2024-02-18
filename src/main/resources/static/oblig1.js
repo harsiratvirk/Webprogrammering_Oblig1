@@ -100,42 +100,42 @@ function sjekkValidering() {
 let billettliste = [];
 function kjopBillett() {
     // Forhindrer å kjøre resten av koden dersom valideringen returnerer false.
-        if(!sjekkValidering()) {
-            return;
-        }
+    if(!sjekkValidering()) {
+        return;
+    }
 
-        // Oppretter billet-objekt og legger det inn i arrayet
-        const billett = {
-            film: document.getElementById("filmer").value,
-            antall: document.getElementById("antall").value,
-            fnavn: document.getElementById("fnavn").value,
-            enavn: document.getElementById("enavn").value,
-            tlf: document.getElementById("tlf").value,
-            epost: document.getElementById("epost").value
-        };
-        billettliste.push(billett);
+    // Oppretter billet-objekt og legger det inn i arrayet
+    const billett = {
+        film: document.getElementById("filmer").value,
+        antall: document.getElementById("antall").value,
+        fnavn: document.getElementById("fnavn").value,
+        enavn: document.getElementById("enavn").value,
+        tlf: document.getElementById("tlf").value,
+        epost: document.getElementById("epost").value
+    };
+    billettliste.push(billett);
 
-        // Skriver ut billetter
-        let ut = "<table><tr>" +
-            "<th>Film</th><th>Antall</th><th>Navn</th><th>Telefonnr</th><th>Epost</th></tr>";
-        for (let pers of billettliste) {
-            ut += "<tr><td>" + pers.film + "</td>" +
-                "<td>" + pers.antall + "</td>" +
-                "<td>" + pers.fnavn + " " + pers.enavn + "</td>" +
-                "<td>" + pers.tlf + "</td>" +
-                "<td>" + pers.epost + "</td>" +
-                "</tr>";
-        }
-        ut += "</table>";
-        document.getElementById("allebilletter").innerHTML = ut;
+    // Skriver ut billetter
+    let ut = "<table><tr>" +
+        "<th>Film</th><th>Antall</th><th>Navn</th><th>Telefonnr</th><th>Epost</th></tr>";
+    for (let pers of billettliste) {
+        ut += "<tr><td>" + pers.film + "</td>" +
+            "<td>" + pers.antall + "</td>" +
+            "<td>" + pers.fnavn + " " + pers.enavn + "</td>" +
+            "<td>" + pers.tlf + "</td>" +
+            "<td>" + pers.epost + "</td>" +
+            "</tr>";
+    }
+    ut += "</table>";
+    document.getElementById("allebilletter").innerHTML = ut;
 
-        // nullstiller inputfeltene
-        document.getElementById("filmer").value = "";
-        document.getElementById("antall").value = "";
-        document.getElementById("fnavn").value = "";
-        document.getElementById("enavn").value = "";
-        document.getElementById("tlf").value = "";
-        document.getElementById("epost").value = "";
+    // nullstiller inputfeltene
+    document.getElementById("filmer").value = "";
+    document.getElementById("antall").value = "";
+    document.getElementById("fnavn").value = "";
+    document.getElementById("enavn").value = "";
+    document.getElementById("tlf").value = "";
+    document.getElementById("epost").value = "";
 }
 
 // Sletter alle billetene
