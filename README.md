@@ -1,4 +1,4 @@
-Webprogrammering - Oblig 1
+Web Programmering - Oblig 1
 =======
 OsloMet username: hakau9101
 
