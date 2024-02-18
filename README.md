@@ -1,4 +1,4 @@
-Web Programmering - Oblig 1
+Web Programming - Oblig 1
 =======
 OsloMet username: hakau9101
 
@@ -8,7 +8,7 @@ Github repo URL: https://github.com/harsiratvirk/oblig-1
 
 Full Name: Harsirat Kaur
 
-Brief description of application:
+Brief description of application:<br>
 A Form for ordering cinema tickets. The user selects a film, the number of 
 tickets and leaves personal details to get one or more cinema tickets returned with the 
 option to delete all tickets.
