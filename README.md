@@ -1,16 +1,16 @@
 Webprogrammering - Oblig 1
 =======
-OsloMet brukernavn: hakau9101
+OsloMet username: hakau9101
 
-GitHub brukernavn: harsiratvirk
+GitHub username: harsiratvirk
 
 Github repo URL: https://github.com/harsiratvirk/oblig-1
 
-Fullt navn: Harsirat Kaur
+Full Name: Harsirat Kaur
 
-Kort beskrivelse av applikasjon: <br>
-Et Skjema for bestilling av kinobilletter. Brukeren velger film, antall
-billetter og legger igjen personopplysninger for å få returnert en eller
-flere kinobilletter med mulighet til å slette samtlige billetter.
+Brief description of application:
+A Form for ordering cinema tickets. The user selects a film, the number of 
+tickets and leaves personal details to get one or more cinema tickets returned with the 
+option to delete all tickets.
 
-Noe inndata som telefonnummer og epost valideres ved hjelp av Regex.
+Some input such as telephone number and email is validated using regex.
