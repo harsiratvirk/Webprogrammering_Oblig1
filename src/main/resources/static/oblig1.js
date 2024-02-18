@@ -53,7 +53,7 @@ function validateTel() {
     const telRegex = /^[0-9]{8}$/;
 
     if (tel === "") {
-        telErr.innerText = "Phone number is required";
+       telErr.innerText = "Phone number is required";
     }
     else if (!telRegex.test(tel)) {
         telErr.innerText = "Enter a valid phone number"
@@ -68,10 +68,10 @@ function validateEmail() {
     const emailRegex = /^[a-zA-Z0-9._%&+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (email === "") {
-        emailErr.innerText = "Email address is required";
+        emailErr.innerText = "Email adress is required";
     }
     else if (!emailRegex.test(email)) {
-        emailErr.innerText = "Enter a valid email address"
+        emailErr.innerText = "Enter a valid email adress"
     } else {
         emailErr.innerText = "";
     }
