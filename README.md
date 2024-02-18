@@ -4,7 +4,7 @@ OsloMet username: hakau9101
 
 GitHub username: harsiratvirk
 
-Github repo URL: https://github.com/harsiratvirk/oblig-1
+Github repo URL: https://github.com/harsiratvirk/WebProgramming_Oblig1
 
 Full Name: Harsirat Kaur
 
