@@ -84,7 +84,7 @@ function checkValidation() {
     validateSname();
     validateTel();
     validateEmail();
-    
+
     // Returns true if no validation error, false otherwise.
     const validationError = document.getElementById("moviesErr").innerText ||
         document.getElementById("numberErr").innerText ||
