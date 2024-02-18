@@ -1,45 +1,51 @@
 
 // Inputvalidering og sjekk av tomme felt
+function sjekkFilmer() {
+    const filmer = document.getElementById("filmer").value;
+    const filmfeil = document.getElementById("filmfeil");
+
+    // Sjekker om feltet er tomt
+    if (filmer === "" || filmer === "default") {
+        filmfeil.innerText = "Film må oppgis";
+    } else {
+        filmfeil.innerText = ""; // nullstiller felt
+    }
+}
+
 function sjekkAntall() {
     const antall = document.getElementById("antall").value;
     const antfeil = document.getElementById("antfeil");
 
-    // Sjekker om feltet er tomt
     if (antall === "") {
         antfeil.innerText = "Antall må oppgis";
-        return false;
-
-        // Sjekker om input er et tall
-    } else if (isNaN(antall) || antall < 1) {
+    }
+    // Sjekker om input er et tall
+    else if (isNaN(antall) || antall < 1) {
         antfeil.innerText = "Skriv inn tall";
-        return false;
     } else {
-        antfeil.innerText = ""; // nullstiller felt
-        return true;
+        antfeil.innerText = "";
     }
 }
 
 function sjekkFnavn() {
     const fnavn = document.getElementById("fnavn").value;
     const fnavnfeil = document.getElementById("fnavnfeil");
+
     if (fnavn === "") {
         fnavnfeil.innerText = "Fornavn må oppgis";
-        return false;
     } else {
         fnavnfeil.innerText = "";
-        return true;
     }
 }
 
 function sjekkEnavn() {
     const enavn = document.getElementById("enavn").value;
     const enavnfeil = document.getElementById("enavnfeil");
+
     if (enavn === "") {
         enavnfeil.innerText = "Etternavn må oppgis";
-        return false;
     } else {
         enavnfeil.innerText = "";
-        return true;
     }
 }
 
@@ -50,14 +56,11 @@ function sjekkTlf() {
 
     if (tlf === "") {
        tlffeil.innerText = "Tlfnr må oppgis";
-       return false;
     }
     else if (!nrRegex.test(tlf)) {
         tlffeil.innerText = "Oppgi et gyldig telefonnummer."
-        return false;
     } else {
         tlffeil.innerText = "";
-        return true;
     }
 }
 
@@ -68,40 +71,40 @@ function sjekkEpost() {
 
     if (epost === "") {
         epostfeil.innerText = "Epost må oppgis";
-        return false;
     }
     else if (!epostRegex.test(epost)) {
         epostfeil.innerText = "Oppgi en gyldig epost."
-        return false;
     } else {
         epostfeil.innerText = "";
-        return true;
     }
 }
 
 function sjekkValidering() {
-        sjekkAntall();
-        sjekkFnavn();
-        sjekkEnavn();
-        sjekkTlf();
-        sjekkEpost();
+    sjekkFilmer()
+    sjekkAntall();
+    sjekkFnavn();
+    sjekkEnavn();
+    sjekkTlf();
+    sjekkEpost();
 
-        const valideringsFeil = document.getElementById("antfeil").innerText ||
+    // Returnerer true hvis ingen valideringsfeil, ellers false.
+        const valideringsFeil = document.getElementById("filmfeil").innerText ||
+            document.getElementById("antfeil").innerText ||
             document.getElementById("fnavnfeil").innerText ||
             document.getElementById("enavnfeil").innerText ||
             document.getElementById("tlffeil").innerText ||
             document.getElementById("epostfeil").innerText;
-
         return !valideringsFeil;
-    }
+}
 
 let billettliste = [];
 function kjopBillett() {
+    // Forhindrer å kjøre resten av koden dersom valideringen returnerer false.
         if(!sjekkValidering()) {
             return;
         }
 
-        // Oppretter objekt og legger det inn i arrayet
+        // Oppretter billet-objekt og legger det inn i arrayet
         const billett = {
             film: document.getElementById("filmer").value,
             antall: document.getElementById("antall").value,
@@ -110,7 +113,7 @@ function kjopBillett() {
             tlf: document.getElementById("tlf").value,
             epost: document.getElementById("epost").value
         };
-        billettliste.push(billett); // legger til billett i arrayet
+        billettliste.push(billett);
 
         // Skriver ut billetter
         let ut = "<table><tr>" +
@@ -133,7 +136,6 @@ function kjopBillett() {
         document.getElementById("enavn").value = "";
         document.getElementById("tlf").value = "";
         document.getElementById("epost").value = "";
-
 }
 
 // Sletter alle billetene
