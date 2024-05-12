@@ -6,54 +6,41 @@
 </head>
 <body>
 <script src="oblig1.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- Form for ordering cinema tickets -->
 <h1>Order cinema tickets</h1>
-
-<label for="movies">Select movie:</label>
-<select id="movies" onchange="validateMovies()">
-    <option value="default">Choose movie here</option>
-    <option>Avatar</option>
-    <option>Titanic</option>
-    <option>Rush Hour</option>
-    <option>Wonka</option>
-</select>
-<span id="moviesErr" style="color: red"></span><br><br>
-
-<label for="number">Number</label>
-<input type="text" id="number" maxlength="2" size="2" onchange="validateNumber()"/>
-<span id="numberErr" style="color: red"></span><br><br>
-
 <table>
-    <tr>
-        <td>Name</td>
-        <td><input type="text" id="fname" onchange="validateFname()"/>
-            <span id="fnameErr" style="color: red"></span></td>
-    </tr>
-    <tr>
-        <td>Surname</td>
-        <td><input type="text" id="sname" onchange="validateSname()"/>
-            <span id="snameErr" style="color: red"></span></td>
-    </tr>
-    <tr>
-        <td>Phone number</td>
-        <td><input type="text" id="tel" onchange="validateTel()"/>
-            <span id="telErr" style="color: red"></span></td>
-    </tr>
-    <tr>
-        <td>Email</td>
-        <td><input type="text" id="email" onchange="validateEmail()"/>
-            <span id="emailErr" style="color: red"></span></td>
-    </tr>
+    <tr><td>Select movie</td>
+        <td><select id="movies" onchange="validateMovies(this.value)">
+            <option value="default">Choose movie here</option>
+            <option>Jatt & Juliett</option>
+            <option>Animal</option>
+            <option>Carry on jatta 3</option>
+        </select></td>
+    <td><span id="moviesErr" style="color: red"></span></td></tr>
+    <tr><td>Number</td>
+        <td><input type="text" id="number" onchange="validateNumber(this.value)"/></td>
+        <td><span id="numberErr" style="color: red"></span></td></tr>
+    <tr><td>Name</td>
+        <td><input type="text" id="fname" onchange="validateFname(this.value)"/></td>
+        <td><span id="fnameErr" style="color: red"></span></td></tr>
+    <tr><td>Surname</td>
+        <td><input type="text" id="sname" onchange="validateSname(this.value)"/></td>
+        <td><span id="snameErr" style="color: red"></span></td></tr>
+    <tr><td>Phone number</td>
+        <td><input type="text" id="tel" onchange="validateTel(this.value)"/></td>
+        <td><span id="telErr" style="color: red"></span></td></tr>
+    <tr><td>Email</td>
+        <td><input type="text" id="email" onchange="validateEmail(this.value)"/></td>
+        <td><span id="emailErr" style="color: red"></span></td></tr>
 </table>
-<button onclick="buyTicket()">Buy ticket</button>
+<button onclick="validateandsave()">Buy ticket</button>
 
 <!-- List of purchased tickets -->
 <h2>All tickets</h2>
 <div id="allTickets"></div>
-
-<!-- Button to delete all tickets -->
-<button onclick="deleteTickets()">Delete all tickets</button>
-
+    <!-- Button to delete all tickets -->
+<button class="btn btn-danger" onclick="deleteTickets()">Delete all tickets</button>
 </body>
 </html>

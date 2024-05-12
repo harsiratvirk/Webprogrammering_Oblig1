@@ -1,143 +1,120 @@
-
 // Input validation and check for empty fields
-function validateMovies() {
-    const movies = document.getElementById("movies").value;
-    const moviesErr = document.getElementById("moviesErr");
-
-    if (movies === "" || movies === "default") {
-        moviesErr.innerText = "Movie is required";
+function validateMovies(input) {
+    if (input === "" || input === "default") {
+        $("#moviesErr").text("Movie is required");
+        return false;
     } else {
-        moviesErr.innerText = ""; // Resets field
+        $("#moviesErr").text("");
+        return true;
     }
 }
 
-function validateNumber() {
-    const number = document.getElementById("number").value;
-    const numberErr = document.getElementById("numberErr");
-
-    if (number === "") {
-        numberErr.innerText = "Quantity is required";
-    }
-    else if (isNaN(number) || number < 1) {
-        numberErr.innerText = "Enter numbers";
+function validateNumber(input) {
+    if (input === "") {
+        $("#numberErr").text("Quantity is required");
+        return false;
+    } else if (isNaN(input) || input < 1) {
+        $("#numberErr").text("Enter numbers");
+        return false;
     } else {
-        numberErr.innerText = "";
+        $("#numberErr").text("");
+        return true;
     }
 }
 
-function validateFname() {
-    const fname = document.getElementById("fname").value;
-    const fnameErr = document.getElementById("fnameErr");
-
-    if (fname === "") {
-        fnameErr.innerText = "Name is required";
+function validateFname(input) {
+    if (input === "") {
+        $("#fnameErr").text("Name is required");
+        return false;
     } else {
-        fnameErr.innerText = "";
+        $("#fnameErr").text("");
+        return true;
+    }
+}
+function validateSname(input) {
+    if (input === "") {
+        $("#snameErr").text("Surname is required");
+        return false;
+    } else {
+        $("#snameErr").text("");
+        return true;
     }
 }
 
-function validateSname() {
-    const sname = document.getElementById("sname").value;
-    const snameErr = document.getElementById("snameErr");
-
-    if (sname === "") {
-        snameErr.innerText = "Surname is required";
-    } else {
-        snameErr.innerText = "";
-    }
-}
-
-function validateTel() {
-    const tel = document.getElementById("tel").value;
-    const telErr = document.getElementById("telErr");
+function validateTel(input) {
     const telRegex = /^[0-9]{8}$/;
-
-    if (tel === "") {
-        telErr.innerText = "Phone number is required";
-    }
-    else if (!telRegex.test(tel)) {
-        telErr.innerText = "Enter a valid phone number"
+    const ok = telRegex.test(input);
+    if(input === "") {
+        $("#telErr").text("Phone number is required");
+        return false;
+    } else if (!ok) {
+        $("#telErr").text("Enter a valid phone number");
+        return false;
     } else {
-        telErr.innerText = "";
+        $("#telErr").text("");
+        return true;
     }
 }
 
-function validateEmail() {
-    const email = document.getElementById("email").value;
-    const emailErr = document.getElementById("emailErr");
+function validateEmail(input) {
     const emailRegex = /^[a-zA-Z0-9._%&+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (email === "") {
-        emailErr.innerText = "Email address is required";
-    }
-    else if (!emailRegex.test(email)) {
-        emailErr.innerText = "Enter a valid email address"
+    const ok = emailRegex.test(input);
+    if(input === "") {
+        $("#emailErr").text("Email number is required");
+        return false;
+    } else if (!ok) {
+        $("#emailErr").text("Enter a valid email");
+        return false;
     } else {
-        emailErr.innerText = "";
+        $("#emailErr").text("");
+        return true;
     }
 }
 
-function checkValidation() {
-    validateMovies()
-    validateNumber();
-    validateFname();
-    validateSname();
-    validateTel();
-    validateEmail();
-
-    // Returns true if no validation error, false otherwise.
-    const validationError = document.getElementById("moviesErr").innerText ||
-        document.getElementById("numberErr").innerText ||
-        document.getElementById("fnameErr").innerText ||
-        document.getElementById("snameErr").innerText ||
-        document.getElementById("telErr").innerText ||
-        document.getElementById("emailErr").innerText;
-    return !validationError;
+function validateandsave(){
+    const movieOK = validateMovies($("#movies").val());
+    const numberOK = validateNumber($("#number").val());
+    const fnameOK = validateFname($("#fname").val());
+    const snameOK = validateSname($("#sname").val());
+    const telOK = validateTel($("#tel").val());
+    const emailOK = validateEmail($("#email").val());
+    if (movieOK && numberOK && fnameOK && snameOK && telOK && emailOK) {
+        buyTicket();
+    }
 }
 
 let ticketList = [];
 function buyTicket() {
-    // Prevents the rest of the code from running if the validation returns false.
-    if(!checkValidation()) {
-        return;
-    }
-
 // Creates the ticket object and puts it into the array
     const ticket = {
-        movies: document.getElementById("movies").value,
-        number: document.getElementById("number").value,
-        fname: document.getElementById("fname").value,
-        sname: document.getElementById("sname").value,
-        tel: document.getElementById("tel").value,
-        email: document.getElementById("email").value
+        movies: $("#movies").val(),
+        number: $("#number").val(),
+        fname: $("#fname").val(),
+        sname: $("#sname").val(),
+        tel: $("#tel").val(),
+        email: $("#email").val(),
     };
     ticketList.push(ticket);
 
 // Prints ticket
-    let out = "<table><tr>" +
-        "<th>Movies</th><th>Number of tickets</th><th>Name</th><th>Phone number</th><th>Email</th></tr>";
+    let out= "<table><tr><th>Movies</th><th>Number of tickets</th><th>Name</th>" +
+        "<th>Surname</th><th>Phone number</th><th>Email</th></tr>";
     for (let pers of ticketList) {
-        out += "<tr><td>" + pers.movies + "</td>" +
-            "<td>" + pers.number + "</td>" +
-            "<td>" + pers.fname + " " + pers.sname + "</td>" +
-            "<td>" + pers.tel + "</td>" +
-            "<td>" + pers.email + "</td>" +
-            "</tr>";
+        out += "<tr><td>" + pers.movies + "</td><td>" + pers.number + "</td>" +
+            "<td>" + pers.fname + "</td><td>" + pers.sname + "</td>" +
+            "<td>" + pers.tel + "</td><td>" + pers.email + "</td></tr>";
     }
     out += "</table>";
-    document.getElementById("allTickets").innerHTML = out;
-
-// Resets the input fields
-    document.getElementById("movies").value = "";
-    document.getElementById("number").value = "";
-    document.getElementById("fname").value = "";
-    document.getElementById("sname").value = "";
-    document.getElementById("tel").value = "";
-    document.getElementById("email").value = "";
+    $("#allTickets").html(out);
+    $("#movies").val("default"); // reset inputs
+    $("#number").val("");
+    $("#fname").val("");
+    $("#sname").val("");
+    $("#tel").val("");
+    $("#email").val("");
 }
 
 // Deletes all tickets
 function deleteTickets() {
-    ticketList = [];
     document.getElementById("allTickets").innerHTML = "";
 }
